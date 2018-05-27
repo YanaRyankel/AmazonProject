@@ -70,7 +70,13 @@ public class AmazonPageTest {
         assertEquals(PRODUCT_NAME, actualProductName);
     }
 
+    @Test
+    public void findBook() throws InterruptedException {
+        AmazonPage amazonLandingPage = new AmazonPage(driver);
+       amazonLandingPage.goToShopAllPage();
+       ShopAllPage shopAllPage=new ShopAllPage(driver);
+       assertTrue(shopAllPage.selectCheckbox());
+    }
 }
-
 
 
