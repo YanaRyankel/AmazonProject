@@ -23,4 +23,8 @@ private WebElement checkbox;
 
         return checkbox.isDisplayed();
     }
+
+    public  String getShopAllPageUrl(){
+        return driver.getCurrentUrl();
+    }
 }

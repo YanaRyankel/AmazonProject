@@ -15,6 +15,11 @@ public class ProductListPage {
         title=driver.findElement(By.xpath("//h2[ @data-attribute='"+productTitle+"']"));
     }
 
+    public Boolean isTitleDisplayed(String productTitle){
+        title=driver.findElement(By.xpath("//h2[ @data-attribute='"+productTitle+"']"));
+        return title.isDisplayed();
+    }
+
     public ProductPage openProductPage(String productTitle){
         title.click();
         return new ProductPage(driver);

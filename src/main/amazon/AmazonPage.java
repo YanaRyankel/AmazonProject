@@ -20,6 +20,7 @@ public class AmazonPage {
     private WebElement searchField;
     private WebElement searchButton;
     private WebElement shopAllLink;
+    private WebElement cartButton;
 
     public AmazonPage(WebDriver driver) {
         this.driver = driver;
@@ -31,6 +32,7 @@ public class AmazonPage {
         searchField=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
         searchButton=driver.findElement(By.xpath("//input[ @value='Go']"));
         shopAllLink=driver.findElement(By.xpath("//a[contains(text(),'Shop all')]"));
+        cartButton=driver.findElement(By.xpath("//*[@id='nav-cart']"));
     }
 
 
@@ -55,8 +57,14 @@ public class AmazonPage {
 
     public ShopAllPage goToShopAllPage()  {
        shopAllLink.click();
+        String expectedUrl="https://www.amazon.com/b/ref=bubbler_shop_all";
 return new ShopAllPage(driver);
 
+    }
+
+    public SignInPage clickOnCartButton(){
+            cartButton.click();
+            return new SignInPage(driver);
     }
 
 }
