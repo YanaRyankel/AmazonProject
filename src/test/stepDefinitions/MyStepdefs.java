@@ -1,10 +1,12 @@
 package stepDefinitions;
 
-import amazon.*;
+import amazon.AmazonPage;
+import amazon.ProductListPage;
+import amazon.ProductPage;
+import amazon.SignInPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertTrue;
@@ -17,7 +19,6 @@ public class MyStepdefs {
     AmazonPage landingPage;
     ProductListPage productListPage;
     ProductPage productPage;
-    ShopAllPage shopAllPage;
     SignInPage signInPage;
 
 
@@ -51,18 +52,6 @@ public class MyStepdefs {
     }
 
 
-    @When("^User press Shop All link$")
-    public void userPressShopAllLink() throws Throwable {
-        landingPage.goToShopAllPage();
-    }
-
-    @Then("^User see Shop All page$")
-    public void userSeeShopAllPage() throws Throwable {
-        String expectedUrl = "https://www.amazon.com/b/ref=bubbler_shop_all";
-        String actualUrl = shopAllPage.getShopAllPageUrl();
-        Assert.assertEquals(expectedUrl, actualUrl);
-    }
-
     @When("^user searches for \"([^\"]*)\"$")
     public void
     userSearchesFor(String productName) throws Throwable {
@@ -78,19 +67,14 @@ public class MyStepdefs {
 
     @When("^user press Cart button$")
     public void userPressCartButton() throws Throwable {
-        landingPage.clickOnCartButton();
+        signInPage = landingPage.clickOnCartButton();
     }
 
-    @Then("^user can add \"([^\"]*)\" and \"([^\"]*)\"$")
-    public void userCanAddAnd(String email, String wrongPassword) throws Throwable {
-        signInPage.clickSignIn();
-        signInPage.addEmail(email);
-        signInPage.addPassword(wrongPassword);
-    }
 
-    @Then("^user see alert message$")
-    public void userIsSignedIn() throws Throwable {
-        Boolean isAlertDisplayed = signInPage.getAlertMessage();
-        assertTrue(isAlertDisplayed);
+    @Then("^user see signIn link$")
+    public void userSeeSignInLink() throws Throwable {
+        Boolean isSignInLinkDisplayed = signInPage.signInLinkIsDisplayed();
+        assertTrue(isSignInLinkDisplayed);
+
     }
 }
