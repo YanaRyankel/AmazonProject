@@ -1,3 +1,5 @@
+package stepDefinitions;
+
 import amazon.*;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -20,7 +22,7 @@ public class MyStepdefs {
 
 
     public AmazonPage loadAmazonPage() {
-        WebDriver driver = DriverSingleton.getDriver();
+        WebDriver driver = stepDefinitions.DriverSingleton.getDriver();
         driver.get(baseUrl);
         return new AmazonPage(driver);
     }
@@ -39,13 +41,13 @@ public class MyStepdefs {
 
     @When("^I enter product name to search field$")
     public void iEnterProductNameToSearchField() throws Throwable {
-         productListPage = landingPage.searchProduct(PRODUCT_NAME);
+        productListPage = landingPage.searchProduct(PRODUCT_NAME);
     }
 
     @Then("^I see list of product with searched name$")
     public void iSeeListOfProductWithSearchedName() throws Throwable {
-       Boolean isTitleDisplayed=productListPage.isTitleDisplayed(PRODUCT_NAME);
-       assertTrue(isTitleDisplayed);
+        Boolean isTitleDisplayed = productListPage.isTitleDisplayed(PRODUCT_NAME);
+        assertTrue(isTitleDisplayed);
     }
 
 
@@ -56,9 +58,9 @@ public class MyStepdefs {
 
     @Then("^User see Shop All page$")
     public void userSeeShopAllPage() throws Throwable {
-       String expectedUrl="https://www.amazon.com/b/ref=bubbler_shop_all";
-       String actualUrl=shopAllPage.getShopAllPageUrl();
-        Assert.assertEquals(expectedUrl,actualUrl);
+        String expectedUrl = "https://www.amazon.com/b/ref=bubbler_shop_all";
+        String actualUrl = shopAllPage.getShopAllPageUrl();
+        Assert.assertEquals(expectedUrl, actualUrl);
     }
 
     @When("^user searches for \"([^\"]*)\"$")
@@ -69,7 +71,7 @@ public class MyStepdefs {
 
     @Then("^product \"([^\"]*)\" is displayed in the list$")
     public void productIsDisplayedInTheList(String productName) throws Throwable {
-        Boolean isTitleDisplayed=productListPage.isTitleDisplayed(productName);
+        Boolean isTitleDisplayed = productListPage.isTitleDisplayed(productName);
         assertTrue(isTitleDisplayed);
 
     }
@@ -88,7 +90,7 @@ public class MyStepdefs {
 
     @Then("^user see alert message$")
     public void userIsSignedIn() throws Throwable {
-        Boolean isAlertDisplayed=signInPage.getAlertMessage();
+        Boolean isAlertDisplayed = signInPage.getAlertMessage();
         assertTrue(isAlertDisplayed);
     }
 }

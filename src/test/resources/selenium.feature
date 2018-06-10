@@ -14,11 +14,10 @@ Feature: landing page
     When User press Shop All link
     Then User see Shop All page
 
-
-
   Scenario: User see alert message after adding wrong password
     Given user opens amazon home page
     When user press Cart button
     Then user can add "test@mail.com" and "password1"
-    and
     Then user see alert message
+
+

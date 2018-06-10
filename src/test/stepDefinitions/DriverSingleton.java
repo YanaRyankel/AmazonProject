@@ -1,11 +1,8 @@
-import org.openqa.selenium.By;
+package stepDefinitions;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.util.List;
-import java.util.Set;
 
 public class DriverSingleton {
 
