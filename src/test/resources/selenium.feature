@@ -10,9 +10,10 @@ Feature: landing page
     When user searches for "Star Wars: The Last Jedi Chewie and the Porgs"
     Then product "Star Wars: The Last Jedi Chewie and the Porgs" is displayed in the list
 
-  Scenario: User see alert message after adding wrong password
+  Scenario: User can sightIn from Cart page
     Given user opens amazon home page
     When user press Cart button
-    Then user see signIn link
+    And user clicks on Sign In link
+    Then login for is displayed
 
 

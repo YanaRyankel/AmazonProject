@@ -70,11 +70,14 @@ public class MyStepdefs {
         signInPage = landingPage.clickOnCartButton();
     }
 
+    @Then("^user can get to signIn page$")
+    public void userCanGetToSignInPage() throws Throwable {
+        Boolean isSignInTitleDisplayed = signInPage.isSignInTitleDisplayed();
+        assertTrue(isSignInTitleDisplayed);
+    }
 
-    @Then("^user see signIn link$")
-    public void userSeeSignInLink() throws Throwable {
-        Boolean isSignInLinkDisplayed = signInPage.signInLinkIsDisplayed();
-        assertTrue(isSignInLinkDisplayed);
-
+    @When("^user clicks on Sign In link$")
+    public void userClicksOnSignInLink() throws Throwable {
+        signInPage.openSignInPage();
     }
 }
